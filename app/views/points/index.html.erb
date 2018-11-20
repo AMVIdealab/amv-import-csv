@@ -1,0 +1,44 @@
+<%= flash[:notice] %>
+<table>
+  <thead>
+    <th>Id</th>
+		<th>Name</th>
+		<th>Short Description</th>
+		<th>Description</th>
+		<th>Street</th>
+		<th>Street number</th>
+    <th>City</th>
+    <th>Province</th>
+    <th>Zipcode</th>
+    <th>Country</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Category</th>
+	</thead>
+	<tbody>
+		<% @points.each do |point| %>
+      <tr>
+        <td><%= point.id%></td>
+				<td><%= point.name %></td>
+				<td><%= point.short_description %></td>
+				<td><%= point.description %></td>
+				<td><%= point.street %></td>
+				<td><%= point.street_number %></td>
+				<td><%= point.city %></td>
+				<td><%= point.province %></td>
+				<td><%= point.zipcode %></td>
+				<td><%= point.country %></td>
+				<td><%= point.latitude %></td>
+				<td><%= point.longitude %></td>
+				<td><%= point.category %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<div>
+	<h4> Import! </h4>
+		<%= form_tag import_points_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import CSV" %>
+		<% end %> 
+</div>
